@@ -1,0 +1,40 @@
+export interface InferenceResultAdapa {
+    audio_filename: string
+    "1-1_small-sounding-engine": number
+    "1-2_medium-sounding-engine": number
+    "1-3_large-sounding-engine": number
+    "1-X_engine-of-uncertain-size": number
+    "2-1_rock-drill": number
+    "2-2_jackhammer": number
+    "2-3_hoe-ram": number
+    "2-4_pile-driver": number
+    "2-X_other-unknown-impact-machinery": number
+    "3-1_non-machinery-impact": number
+    "4-1_chainsaw": number
+    "4-2_small-medium-rotating-saw": number
+    "4-3_large-rotating-saw": number
+    "4-X_other-unknown-powered-saw": number
+    "5-1_car-horn": number
+    "5-2_car-alarm": number
+    "5-3_siren": number
+    "5-4_reverse-beeper": number
+    "5-X_other-unknown-alert-signal": number
+    "6-1_stationary-music": number
+    "6-2_mobile-music": number
+    "6-3_ice-cream-truck": number
+    "6-X_music-from-uncertain-source": number
+    "7-1_person-or-small-group-talking": number
+    "7-2_person-or-small-group-shouting  ": number
+    "7-3_large-crowd": number
+    "7-4_amplified-speech": number
+    "7-X_other-unknown-human-voice": number
+    "8-1_dog-barking-whining": number
+    "1_engine": number
+    "2_machinery-impact": number
+    "3_non-machinery-impact": number
+    "4_powered-saw": number
+    "5_alert-signal": number
+    "6_music": number
+    "7_human-voice": number
+    "8_dog": number
+  }
