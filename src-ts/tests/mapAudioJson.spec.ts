@@ -18,7 +18,7 @@ describe("The handler function should map audios From adapa", () => {
     });
 
     it("Function should return new inference object", async () => {
-        let res = await mapAudio(deviceInfo1);
+        let res = await mapAudio({body:deviceInfo1});
         expect(res.body.dato1).to.be.equal(0.0138548)
     });
 
