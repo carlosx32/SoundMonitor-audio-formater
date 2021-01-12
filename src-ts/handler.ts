@@ -2,16 +2,23 @@ import { audioInference } from "./class/audioInference"
 import { InferenceResultAdapa } from "./class/audioInferenceAdapa"
 import { inferenciadores } from "./class/enums/inferenciadoresEnum"
 
-export const mapAudio = async (body:any): Promise<any> => {
-  console.log("el cuerpo es: " ,body)
 
-  let result = extractInfo(body)
+
+export const mapAudio = async (httpInfo:any): Promise<any> => {
+  let result = extractInfo(JSON.parse(httpInfo.body))
   
+
+  const response = {
+    statusCode: 200,
+    headers: {
+    },
+    body: JSON.stringify({
+      status: "ok",
+      data: result
+     })
+  };
   
-  return {
-    statusCode:200,
-    body:result
-  }
+  return response;
 
 }
 
@@ -24,7 +31,7 @@ let extractInfo:any =(body:any) => {
     result = mapper(body.inferencer_name,  body.inference_result);
   }
   else{
-    result ="no inferencerName or result founded";
+    result ="no inferencerName or result found";
   }
   return result;
 
