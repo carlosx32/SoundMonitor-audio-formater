@@ -5,17 +5,14 @@ import { inferenciadores } from "./class/enums/inferenciadoresEnum"
 
 
 export const mapAudio = async (httpInfo:any): Promise<any> => {
-  let result = extractInfo(JSON.parse(httpInfo.body))
-  
 
+  let body= JSON.parse(httpInfo.body)
+  let result = extractInfo(body)
   const response = {
     statusCode: 200,
     headers: {
     },
-    body: JSON.stringify({
-      status: "ok",
-      data: result
-     })
+    body:  JSON.stringify(result)
   };
   
   return response;
@@ -24,8 +21,6 @@ export const mapAudio = async (httpInfo:any): Promise<any> => {
 
 let extractInfo:any =(body:any) => {
   let result;
-
-
 
   if(body.inferencer_name && body.inference_result){
     result = mapper(body.inferencer_name,  body.inference_result);
