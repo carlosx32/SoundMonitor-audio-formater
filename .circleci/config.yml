@@ -27,15 +27,17 @@ jobs:
         
       # run tests!
   test:
-    - restore_cache:
-      keys:
-      - v1-dependencies-
-    - run: 
-        name: Run tests with coverage
-        command: npm test --coverage
-    - run:
-        name : compile
-        command : npm run compile
-    - run:
-        name: Deploy application
-        command: sls deploy --stage pre
+    working_directory: ~/repo
+    steps:
+      - restore_cache:
+        keys:
+        - v1-dependencies-
+      - run: 
+          name: Run tests with coverage
+          command: npm test --coverage
+      - run:
+          name : compile
+          command : npm run compile
+      - run:
+          name: Deploy application
+          command: sls deploy --stage pre
