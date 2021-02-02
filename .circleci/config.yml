@@ -1,12 +1,14 @@
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 
+
+
+
 jobs:
-  -build-prj:
+  -build:
     docker:
       - image: circleci/node:8.10
     working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
@@ -21,11 +23,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-
+
   test:
     docker:
       - image: circleci/node:8.10
     working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
@@ -40,6 +42,8 @@ jobs:
       - run:
           name: Deploy application
           command: sls deploy --stage pre
+
+
 workflows:
   version: 2
   build-andtest-project:
