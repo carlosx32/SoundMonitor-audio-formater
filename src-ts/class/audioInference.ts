@@ -1,15 +1,17 @@
 export class audioInference {
 
-    private engine: number;
-    private machiney_impact: number;
-    private non_machiney_impact: number;
-    private powered_saw: number;
-    private alert_signal: number;
-    private music: number;
-    private human_voice: number;
-    private dog: number;
 
-    constructor() {
+
+    constructor( 
+        private engine: number,
+        private machiney_impact: number,
+        private non_machiney_impact: number,
+        private powered_saw: number,
+        private alert_signal: number,
+        private music: number,
+        private human_voice: number,
+        private dog: number
+        ) {
     }
     public set _engine(_engine : number) {
         this.engine = _engine;

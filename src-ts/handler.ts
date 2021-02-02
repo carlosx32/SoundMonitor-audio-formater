@@ -34,10 +34,10 @@ let extractInfo: any = (body: any) => {
 
 
 const mapper = (inferenceName: string, result: InferenceResultAdapa): audioInference => {
-  let standarInfo: audioInference = new audioInference();
+  let standarInfo: audioInference = new audioInference(0,0,0,0,0,0,0,0);
 
   switch (inferenceName) {
-    case inferenciadores.adapa:
+    case inferenciadores.ADAPA:
       standarInfo._engine = result["1_engine"];
       standarInfo._machiney_impact = result["2_machinery-impact"];
       standarInfo._non_machiney_impact = result["3_non-machinery-impact"];
@@ -50,7 +50,7 @@ const mapper = (inferenceName: string, result: InferenceResultAdapa): audioInfer
     case inferenciadores.INFERENCER_TEST:
       break;
     default:
-      audioInference;
+      standarInfo;
   }
 
   return standarInfo;
