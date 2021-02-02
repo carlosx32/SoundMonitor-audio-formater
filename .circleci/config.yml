@@ -12,12 +12,9 @@ jobs:
 
     steps:
       - checkout
-      - sonarcloud/scan
       - restore_cache:
           keys:
           - v1-dependencies-
-          - v1-dependencies-
-
       - run:
           name: Install Serverless CLI and dependencies
           command: |
@@ -29,13 +26,16 @@ jobs:
           key: v1-dependencies-
         
       # run tests!
-      - run: 
-          name: Run tests with coverage
-          command: npm test --coverage
-      - run:
-          name : compile
-          command : npm run compile
-      - run:
-          name: Deploy application
-          command: sls deploy --stage pre
-          
+  test:
+    - restore_cache:
+      keys:
+      - v1-dependencies-
+    - run: 
+        name: Run tests with coverage
+        command: npm test --coverage
+    - run:
+        name : compile
+        command : npm run compile
+    - run:
+        name: Deploy application
+        command: sls deploy --stage pre
