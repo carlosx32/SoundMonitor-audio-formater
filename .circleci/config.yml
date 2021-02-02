@@ -2,10 +2,9 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 
 jobs:
-  build:
+  -build-prj:
     docker:
       - image: circleci/node:8.10
-
     working_directory: ~/repo
 
     steps:
@@ -23,12 +22,14 @@ jobs:
             - node_modules
           key: v1-dependencies-
   test:
+    docker:
+      - image: circleci/node:8.10
     working_directory: ~/repo
 
     steps:
       - restore_cache:
-        keys:
-        - v1-dependencies-
+          keys:
+          - v1-dependencies-
       - run: 
           name: Run tests with coverage
           command: npm test --coverage
@@ -42,7 +43,7 @@ workflows:
   version: 2
   build-project:
     jobs:
-      - build
+      - build-prj
   test-project:
     jobs:
       - test
