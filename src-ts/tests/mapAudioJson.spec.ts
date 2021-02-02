@@ -8,7 +8,6 @@ describe("The handler function should map audios From adapa", () => {
     
     beforeEach(() =>  {
         deviceInfo1 = require("./resources/device.json")
-
     });
 
     it("Function should return message when no inferences name and result", async () => {
