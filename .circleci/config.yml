@@ -42,11 +42,9 @@ jobs:
           command: sls deploy --stage pre
 workflows:
   version: 2
-  build-project:
+  build-andtest-project:
     jobs:
       - build-prj
-  test-project:
-    jobs:
-      - test
-        requires
-        - build-project
+      - test:
+          requires:
+          - build-prj
