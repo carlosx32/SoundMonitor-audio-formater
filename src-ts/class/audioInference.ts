@@ -2,8 +2,7 @@ export class audioInference {
 
 
 
-    constructor( 
-        private engine: number,
+    constructor( private engine: number,
         private machiney_impact: number,
         private non_machiney_impact: number,
         private powered_saw: number,

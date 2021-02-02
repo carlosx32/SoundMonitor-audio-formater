@@ -50,7 +50,6 @@ const mapper = (inferenceName: string, result: InferenceResultAdapa): audioInfer
     case inferenciadores.INFERENCER_TEST:
       break;
     default:
-      standarInfo;
   }
 
   return standarInfo;
