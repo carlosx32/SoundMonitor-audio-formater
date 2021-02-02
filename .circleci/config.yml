@@ -5,7 +5,7 @@ orbs:
 
 
 jobs:
-  -build:
+  -"build-prj":
     docker:
       - image: circleci/node:8.10
     working_directory: ~/repo
@@ -24,7 +24,7 @@ jobs:
             - node_modules
           key: v1-dependencies-
 
-  test:
+  "test":
     docker:
       - image: circleci/node:8.10
     working_directory: ~/repo
@@ -42,7 +42,6 @@ jobs:
       - run:
           name: Deploy application
           command: sls deploy --stage pre
-
 
 workflows:
   version: 2
