@@ -16,25 +16,25 @@ export class audioInference {
     }
     
     public set _machiney_impact(_machiney_impact : number) {
-        this.engine = _machiney_impact;
+        this.machiney_impact = _machiney_impact;
     }
     public set _non_machiney_impact(_non_machiney_impact : number) {
-        this.engine = _non_machiney_impact;
+        this.non_machiney_impact = _non_machiney_impact;
     }
     public set _powered_saw(_powered_saw : number) {
-        this.engine = _powered_saw;
+        this.powered_saw = _powered_saw;
     }
     public set _alert_signal(_alert_signal : number) {
-        this.engine = _alert_signal;
+        this.alert_signal = _alert_signal;
     }
     public set _music(_music : number) {
-        this.engine = _music;
+        this.music = _music;
     }
     public set _human_voice(_human_voice : number) {
-        this.engine = _human_voice;
+        this.human_voice = _human_voice;
     }
     public set _dog(_dog : number) {
-        this.engine = _dog;
+        this.dog = _dog;
     }
 
 }

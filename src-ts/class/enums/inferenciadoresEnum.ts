@@ -1,3 +1,4 @@
 export enum inferenciadores{
-    adapa = "adapa"
+    ADAPA = "adapa",
+    INFERENCER_TEST="test";
 }

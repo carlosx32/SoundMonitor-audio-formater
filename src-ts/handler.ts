@@ -47,11 +47,13 @@ const mapper = (inferenceName: string, result: InferenceResultAdapa): audioInfer
       standarInfo._human_voice = result["7_human-voice"];
       standarInfo._dog = result["8_dog"];
       break;
+    case inferenciadores.INFERENCER_TEST:
+      break;
     default:
       audioInference;
   }
 
-  return standarInfo
+  return standarInfo;
 
 
 }
