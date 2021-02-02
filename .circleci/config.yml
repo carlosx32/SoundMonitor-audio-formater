@@ -1,5 +1,3 @@
-version: 2
-
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
 
@@ -24,10 +22,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-
-        
-      # run tests!
   test:
     working_directory: ~/repo
+
     steps:
       - restore_cache:
         keys:
@@ -41,3 +38,13 @@ jobs:
       - run:
           name: Deploy application
           command: sls deploy --stage pre
+workflows:
+  version: 2
+  build-project:
+    jobs:
+      - build
+  test-project:
+    jobs:
+      - test
+        requires
+        - build-project
