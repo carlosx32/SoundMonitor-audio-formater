@@ -5,7 +5,7 @@ orbs:
 
 
 jobs:
-  -build:
+  build:
     docker:
       - image: circleci/node:8.10
     working_directory: ~/repo
