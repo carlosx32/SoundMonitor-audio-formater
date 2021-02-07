@@ -13,7 +13,6 @@ describe("The handler function should map audios From adapa", () => {
     it("Function should return message when no inferences name and result", async () => {
         let res = await mapAudio(   {body : JSON.stringify({"obj":"mensaje"}) })
         res= JSON.parse(res.body)
-
         expect(res).to.be.equal("no inferencerName or result found")
         
     });
