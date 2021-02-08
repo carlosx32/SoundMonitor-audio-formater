@@ -19,7 +19,7 @@ jobs:
                 command: npm run compile
             - run:
                 name: zip and save source code
-                command: zip -r function.zip built/index.js node_modules
+                command: zip -r function.zip built/* node_modules
             - persist_to_workspace:
                 root: ./
                 paths: 
