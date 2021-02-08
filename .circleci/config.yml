@@ -40,7 +40,7 @@ jobs:
                 name: Terraform provide and deploy
                 command: |
                     cd Terraform &&
-                    terraform apply -auto-approve
+                    terraform apply 
 workflows:
     main:
         jobs:
