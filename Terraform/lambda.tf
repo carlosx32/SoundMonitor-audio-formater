@@ -47,7 +47,7 @@ resource "aws_lambda_permission" "apigw_lambda" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  filename      = "lambda.zip"
+  filename      = "function.zip"
   function_name = "sound-monitor-formater"
   role          = aws_iam_role.role.arn
   handler       = "lambda.lambda_handler"
