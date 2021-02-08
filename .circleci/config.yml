@@ -30,16 +30,16 @@ jobs:
         steps:
             - checkout
             - attach_workspace:
-                at: ./terraform
+                at: ./Terraform
             - run:
                 name: Terraform init
                 command: |
-                    cd terraform &&
+                    cd Terraform &&
                     terraform init
             - run:
                 name: Terraform provide and deploy
                 command: |
-                    cd terraform &&
+                    cd Terraform &&
                     terraform apply -auto-approve
 workflows:
     main:
