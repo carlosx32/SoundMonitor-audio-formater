@@ -1,11 +1,11 @@
 # Variables
 variable "myregion" {
-    value = "us-east-2"
-    
+    default = "us-east-2"
+
 }
 
 variable "accountId" {
-    value= "AKIA4BM2RUPO4QL5437Z"
+    default = "AKIA4BM2RUPO4QL5437Z"
 }
 
 # API Gateway
