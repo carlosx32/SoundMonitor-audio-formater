@@ -1,18 +1,14 @@
 # Variables
-variable "aws-region" {
-}
+variable "aws_region" {}
 
-variable "aws-access-key-id" {
+variable "aws_access_key_id" {}
 
-}
-
-variable "aws-secret-access-key" {
-}
+variable "aws_secret_access_key" {}
 
 provider "aws" {
-   region = var.aws-region
-   access_key = var.aws_provider_key
-   secret_key = var.aws-secret-access-key
+   region = var.aws_region
+   access_key = var.aws_access_key_id
+   secret_key = var.aws_secret_access_key
 }
 
 
@@ -52,7 +48,7 @@ resource "aws_lambda_permission" "apigw_lambda" {
   principal     = "apigateway.amazonaws.com"
 
   # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
-  source_arn = "arn:aws:execute-api:${var.aws-region}:${var.aws-access-key-id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
+  source_arn = "arn:aws:execute-api:${var.aws_region}:${var.aws_access_key_id}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
 }
 
 resource "aws_lambda_function" "lambda" {
