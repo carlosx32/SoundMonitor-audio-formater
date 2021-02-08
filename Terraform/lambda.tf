@@ -1,6 +1,7 @@
 # Variables
 variable "myregion" {
     value = "us-east-2"
+    
 }
 
 variable "accountId" {
