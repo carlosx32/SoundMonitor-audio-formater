@@ -1,7 +1,11 @@
 # Variables
-variable "myregion" {}
+variable "myregion" {
+    value = "us-east-2"
+}
 
-variable "accountId" {}
+variable "accountId" {
+    value= "AKIA4BM2RUPO4QL5437Z"
+}
 
 # API Gateway
 resource "aws_api_gateway_rest_api" "api" {
