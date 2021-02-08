@@ -51,7 +51,7 @@ resource "aws_lambda_function" "lambda" {
   function_name = "sound-monitor-formater"
   role          = aws_iam_role.role.arn
   handler       = "lambda.lambda_handler"
-  runtime       = "javascript"
+  runtime       = "nodejs12.x"
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
