@@ -42,7 +42,7 @@ jobs:
                 name: Terraform destroy
                 command: |
                     cd Terraform &&
-                    terraform destroy
+                    terraform destroy -auto-approve
             - run:
                 name: Terraform provide and deploy
                 command: |
