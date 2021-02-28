@@ -8,6 +8,6 @@ resource "aws_lambda_function" "func" {
 
   depends_on = [
     aws_iam_role_policy_attachment.lambda_logs,
-    aws_cloudwatch_log_group.soundmonitor-reporter
+    aws_cloudwatch_log_group.audio_formater
   ]
 }
