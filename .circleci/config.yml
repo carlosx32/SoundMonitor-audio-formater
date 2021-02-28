@@ -51,6 +51,7 @@ workflows:
         jobs:
             - dependencies-zip-generation
             - deploy-lambda:
-                context: AWSContext
+                context: 
+                    - AWSContext
                 requires: 
                     - dependencies-zip-generation
