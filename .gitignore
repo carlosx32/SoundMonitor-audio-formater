@@ -4,7 +4,8 @@
 # package directories
 node_modules
 jspm_packages
-
+.terraform
+.terraform.lock.hcl
 # Serverless directories
 .serverless
 /built
