@@ -6,9 +6,13 @@ variable "aws_region" {
 
 variable "aws_access_key_id" {
     description = "accessKey"
+    default
 }
 
 variable "aws_secret_access_key" {
-    description = "secretKey"
-    
+    description = "secretKey"   
+}
+variable "filename" {
+  description = ".zip function name"
+  default = "function.zip"
 }
