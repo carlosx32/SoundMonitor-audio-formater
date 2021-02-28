@@ -38,11 +38,6 @@ jobs:
                     cd Terraform &&
                     terraform init
             - run:
-                name: Terraform plan
-                command: |
-                    cd Terraform &&
-                    terraform plan
-            - run:
                 name: Terraform provide and deploy
                 command: |
                     cd Terraform &&
