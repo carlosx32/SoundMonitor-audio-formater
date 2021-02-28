@@ -37,6 +37,12 @@ jobs:
                 command: |
                     cd Terraform &&
                     terraform init
+            - run: ls
+            - run:
+                name: Terraform destroy
+                command: |
+                    cd Terraform &&
+                    terraform destroy
             - run:
                 name: Terraform provide and deploy
                 command: |
