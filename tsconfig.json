@@ -7,6 +7,6 @@
       "outDir": "./built",
       "sourceMap": true
     },
-    "include": ["src-ts/**/*"],
+    "include": ["/**/*"],
     "exclude": [ "./tests/","node_modules", "**/*.spec.ts"]
 }

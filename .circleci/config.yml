@@ -22,7 +22,7 @@ jobs:
                 command: npm run compile
             - run:
                 name: zip and save source code
-                command: zip -r function.zip built/* package.json
+                command: zip -r function.zip built/src-ts/** **/index.js package.json
             - persist_to_workspace:
                 root: ./
                 paths: 
