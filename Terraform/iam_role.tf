@@ -1,5 +1,5 @@
 resource "aws_iam_role" "iam_for_lambda" {
-  name = "audio_formater"
+  name               = "audio_formater"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
