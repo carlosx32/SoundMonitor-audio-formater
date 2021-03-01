@@ -5,6 +5,8 @@ resource "aws_lambda_function" "func" {
   handler       = "index.mapAudio"
   runtime       = "nodejs12.x"
   publish       = true
+  source_code_hash = filebase64sha256(var.filename)
+
 
   depends_on = [
     aws_iam_role_policy_attachment.lambda_logs,
