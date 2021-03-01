@@ -7,7 +7,7 @@ import {
 
 export const mapAudio = async (httpInfo: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
-  let body = httpInfo.body
+  let body = httpInfo.body? httpInfo.body: httpInfo
   let result = extractInfo(body)
   const response = {
     statusCode: 200,

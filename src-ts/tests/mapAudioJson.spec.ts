@@ -11,7 +11,7 @@ describe("The handler function should map audios From adapa", () => {
         deviceInfo1 = require("./resources/device.json")
     });
 
-    xit("Function should return message when no inferences name and result", async () => {
+    it("Function should return message when no inferences name and result", async () => {
 
         let httpInfo:APIGatewayProxyEvent = 
         {
@@ -55,7 +55,6 @@ describe("The handler function should map audios From adapa", () => {
         };
         let res = await mapAudio(httpInfo)
         let res1 = JSON.parse(res.body)
-        console.log(res1)
         expect(res1.engine).to.be.equal(0.246735)
     });
 
