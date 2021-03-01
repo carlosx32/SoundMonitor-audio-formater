@@ -1,7 +1,7 @@
 version: 2.1
 
-
-terraform: circleci/terraform@1.2.0
+orbs:
+    - terraform: circleci/terraform@1.2.0
 
 jobs:
     dependencies-zip-generation:
@@ -27,34 +27,34 @@ jobs:
                 root: ./
                 paths: 
                     - function.zip
-    deploy-lambda:
-        docker:
-            - image: hashicorp/terraform:light
-        steps:
-            - checkout
-            - attach_workspace:
-                at: ./Terraform
-            - run:
-                name: validate
-                command: |
-                 cd Terraform && 
-                 terraform validate
-            - run: ls
-            - run:
-                name: Terraform destroy
-                command: |
-                    cd Terraform &&
-                    terraform destroy -auto-approve
-            - run:
-                name: Terraform provide and deploy
-                command: |
-                    cd Terraform &&
-                    terraform apply -auto-approve
+    deploy_infrastructure:
+        - terraform/fmt:
+            checkout: true
+            context: terraform
+        - terraform/validate:
+            checkout: true
+            context: terraform
+            requires:
+                - terraform/fmt
+        - terraform/plan:
+            checkout: true
+            context: terraform
+            persist-workspace: true
+            requires:
+                - terraform/validate
+        - terraform/apply:
+            attach-workspace: true
+            context: terraform
+            filters:
+                branches:
+                only: master
+            requires:
+                - terraform/plan
 workflows:
     main:
         jobs:
             - dependencies-zip-generation
-            - deploy-lambda:
+            - deploy_infrastructure:
                 context: 
                     - AWSContext
                 requires: 
