@@ -15,9 +15,11 @@
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "npm": "^6.14.11",
-    "serverless-offline": "^6.8.0",
     "ts-node": "^9.1.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "aws-sdk": "^2.655.0",
+    "@types/aws-lambda": "^8.10.51",
+    "@types/node": "^13.13.5"
   },
   "scripts": {
     "compile": "tsc",

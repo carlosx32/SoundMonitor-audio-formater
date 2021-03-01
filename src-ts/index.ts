@@ -1,10 +1,13 @@
 import { audioInference } from "./class/audioInference"
 import { InferenceResultAdapa } from "./class/audioInferenceAdapa"
 import { inferenciadores } from "./class/enums/inferenciadoresEnum"
+import { 
+  APIGatewayProxyEvent, 
+  APIGatewayProxyResult 
+} from "aws-lambda";
 
 
-
-export const mapAudio = async (httpInfo: any): Promise<any> => {
+export const mapAudio = async (httpInfo: APIGatewayProxyEvent| any): Promise<APIGatewayProxyResult> => {
 
   let body = JSON.parse(httpInfo.body)
   let result = extractInfo(body)

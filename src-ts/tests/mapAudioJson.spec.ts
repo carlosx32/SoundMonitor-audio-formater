@@ -1,6 +1,6 @@
 
 import { expect } from "chai";
-import {mapAudio} from "../handler"
+import {mapAudio} from "../index"
 
 
 describe("The handler function should map audios From adapa", () => {
