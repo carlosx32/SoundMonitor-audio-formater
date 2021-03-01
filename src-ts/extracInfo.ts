@@ -2,11 +2,12 @@ import { audioInference } from "./class/audioInference";
 import { InferenceResultAdapa } from "./class/audioInferenceAdapa";
 import { inferenciadores } from "./class/enums/inferenciadoresEnum";
 
-export const extractInfo: any = (body: any) => {
+export const extractInfo: any = (body: string) => {
     let result;
-    console.log(body) 
-    if (body.inferencer_name && body.inference_result) {
-      result = mapper(body.inferencer_name, body.inference_result);
+    let infoBody = JSON.parse(body)  
+
+    if (infoBody.inferencer_name && infoBody.inference_result) {
+      result = mapper(infoBody.inferencer_name, infoBody.inference_result);
     }
     else {
       result = "no inferencerName or result found";
