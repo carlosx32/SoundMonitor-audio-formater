@@ -35,16 +35,15 @@ jobs:
             - attach_workspace:
                 at: ./Terraform
             - run:
-                name: validate
+                name: tf init
                 command: |
                  cd Terraform && 
-                 terraform validate
-            - run: ls
-            - run:
-                name: Terraform destroy
+                 terraform init
+            - run: 
+                name: tf plan
                 command: |
-                    cd Terraform &&
-                    terraform destroy -auto-approve
+                 cd Terraform && 
+                 terraform plan
             - run:
                 name: Terraform provide and deploy
                 command: |
