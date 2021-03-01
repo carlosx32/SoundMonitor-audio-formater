@@ -1,5 +1,8 @@
 version: 2.1
 
+
+terraform: circleci/terraform@1.2.0
+
 jobs:
     dependencies-zip-generation:
         docker:
@@ -29,14 +32,13 @@ jobs:
             - image: hashicorp/terraform:light
         steps:
             - checkout
-            - run: echo $aws_secret_access_key
             - attach_workspace:
                 at: ./Terraform
-            - run:
-                name: Terraform init
+            -run:
+                name: validate
                 command: |
-                    cd Terraform &&
-                    terraform init
+                 cd Terraform && 
+                 terraform validate
             - run: ls
             - run:
                 name: Terraform destroy
