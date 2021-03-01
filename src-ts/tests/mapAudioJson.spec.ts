@@ -1,7 +1,7 @@
 
-import { APIGatewayProxyEvent } from "aws-lambda";
+import { APIGatewayEventRequestContextWithAuthorizer, APIGatewayProxyEvent } from "aws-lambda";
 import { expect } from "chai";
-import {mapAudio} from "../index"
+import {mapAudio} from "../../index"
 
 
 describe("The handler function should map audios From adapa", () => {
@@ -11,9 +11,24 @@ describe("The handler function should map audios From adapa", () => {
         deviceInfo1 = require("./resources/device.json")
     });
 
-    it("Function should return message when no inferences name and result", async () => {
-        let httpInfo:APIGatewayProxyEvent;
-        httpInfo.body =  JSON.stringify({"obj":"mensaje"})
+    xit("Function should return message when no inferences name and result", async () => {
+
+        let httpInfo:APIGatewayProxyEvent = 
+        {
+            body :  JSON.stringify({"obj":"mensaje"}),
+            headers : {},
+            multiValueHeaders:{}, 
+            httpMethod:"",
+            isBase64Encoded:false,
+            path:"",
+            pathParameters :  {},
+            queryStringParameters: {},
+            multiValueQueryStringParameters: {},
+            stageVariables:{},
+            requestContext:null, 
+            resource:""
+
+        };
         let res = await mapAudio(httpInfo)
         res = JSON.parse(res.body)
         expect(res).to.be.equal("no inferencerName or result found")
@@ -22,13 +37,26 @@ describe("The handler function should map audios From adapa", () => {
 
     it("Function should return new inference object", async () => {
 
-        let httpInfo:APIGatewayProxyEvent;
-        httpInfo.body =  JSON.stringify( deviceInfo1)
+        let httpInfo:APIGatewayProxyEvent = 
+        {
+            body : JSON.stringify(deviceInfo1),
+            headers : {},
+            multiValueHeaders:{}, 
+            httpMethod:"",
+            isBase64Encoded:false,
+            path:"",
+            pathParameters :  {},
+            queryStringParameters: {},
+            multiValueQueryStringParameters: {},
+            stageVariables:{},
+            requestContext:null, 
+            resource:""
+
+        };
         let res = await mapAudio(httpInfo)
-
-        res= JSON.parse(res.body);
-
-        expect(JSON.parse(res.body).dato1).to.be.equal(0.0138548)
+        let res1 = JSON.parse(res.body)
+        console.log(res1)
+        expect(res1.engine).to.be.equal(0.246735)
     });
 
 
