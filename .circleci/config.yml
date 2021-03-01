@@ -34,7 +34,7 @@ jobs:
             - checkout
             - attach_workspace:
                 at: ./Terraform
-            -run:
+            - run:
                 name: validate
                 command: |
                  cd Terraform && 
