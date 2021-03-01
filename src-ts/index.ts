@@ -7,9 +7,9 @@ import {
 } from "aws-lambda";
 
 
-export const mapAudio = async (httpInfo: APIGatewayProxyEvent| any): Promise<APIGatewayProxyResult> => {
+export const mapAudio = async (httpInfo: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
-  let body = JSON.parse(httpInfo.body)
+  let body = httpInfo.body
   let result = extractInfo(body)
   const response = {
     statusCode: 200,
