@@ -27,34 +27,34 @@ jobs:
                 root: ./
                 paths: 
                     - function.zip
-    deploy_infrastructure:
-        - terraform/fmt:
-            checkout: true
-            context: terraform
-        - terraform/validate:
-            checkout: true
-            context: terraform
-            requires:
-                - terraform/fmt
-        - terraform/plan:
-            checkout: true
-            context: terraform
-            persist-workspace: true
-            requires:
-                - terraform/validate
-        - terraform/apply:
-            attach-workspace: true
-            context: terraform
-            filters:
-                branches:
-                only: master
-            requires:
-                - terraform/plan
+    deploy-lambda:
+        docker:
+            - image: hashicorp/terraform:light
+        steps:
+            - checkout
+            - attach_workspace:
+                at: ./Terraform
+            - run:
+                name: validate
+                command: |
+                 cd Terraform && 
+                 terraform validate
+            - run: ls
+            - run:
+                name: Terraform destroy
+                command: |
+                    cd Terraform &&
+                    terraform destroy -auto-approve
+            - run:
+                name: Terraform provide and deploy
+                command: |
+                    cd Terraform &&
+                    terraform apply -auto-approve
 workflows:
     main:
         jobs:
             - dependencies-zip-generation
-            - deploy_infrastructure:
+            - deploy-lambda:
                 context: 
                     - AWSContext
                 requires: 
