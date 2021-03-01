@@ -4,7 +4,7 @@ import { inferenciadores } from "./class/enums/inferenciadoresEnum";
 
 export const extractInfo: any = (body: any) => {
     let result;
-  
+    console.log(body) 
     if (body.inferencer_name && body.inference_result) {
       result = mapper(body.inferencer_name, body.inference_result);
     }
