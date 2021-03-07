@@ -16,6 +16,4 @@ variable "filename" {
   default     = "function.zip"
 }
 
-variable "accountId" {
-  description = "secretKey for aws"
-}
+variable "accountId" {}
