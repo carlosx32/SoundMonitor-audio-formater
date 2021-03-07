@@ -52,7 +52,7 @@ resource "aws_api_gateway_deployment" "apideploy" {
      aws_api_gateway_integration.lambda_root,
    ]
     triggers = {
-        redeployment = sha1(jsonencode(aws_api_gateway_rest_api.example.body))
+        redeployment = sha1(jsonencode(aws_api_gateway_rest_api.apiLambda.body))
     }
 
     lifecycle {
