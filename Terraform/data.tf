@@ -16,4 +16,6 @@ variable "filename" {
   default     = "function.zip"
 }
 
-variable "accountId" {}
+variable "accountId" {
+  default = 827642192861
+}
