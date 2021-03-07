@@ -17,7 +17,7 @@ resource "aws_api_gateway_rest_api" "audio_formater_api" {
       }
     ],
     "paths" : {
-      "/formater" : {
+      "/formater2" : {
         "post" : {
           "responses" : {
             "200" : {
