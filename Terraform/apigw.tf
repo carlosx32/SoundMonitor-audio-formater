@@ -114,7 +114,7 @@ resource "aws_api_gateway_deployment" "audio_formater_deploy" {
 }
 
 resource "aws_api_gateway_stage" "prod" {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
+  deployment_id = aws_api_gateway_deployment.audio_formater_deploy.id
+  rest_api_id   = aws_api_gateway_rest_api.audio_formater_api.id
   stage_name    = "prod"
 }
