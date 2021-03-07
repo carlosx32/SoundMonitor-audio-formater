@@ -1,32 +1,91 @@
 resource "aws_api_gateway_rest_api" "audio_formater_api" {
-  name        = "audio_formater_api "
-  description = "api for execute lambda"
+    body = jsonencode({
+  "openapi": "3.0.1",
+  "info": {
+    "title": "audio_formater_api ",
+    "description": "api for execute lambda",
+    "version": "2021-03-07T20:27:32Z"
+  },
+  "servers": [
+    {
+      "url": "https://nxcgnkzix8.execute-api.us-east-1.amazonaws.com/{basePath}",
+      "variables": {
+        "basePath": {
+          "default": "/test"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/formater": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      },
+      "options": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Empty": {
+        "title": "Empty Schema",
+        "type": "object"
+      }
+    }
+  }
+})
+
 }
 
-resource "aws_api_gateway_resource" "resource" {
-  path_part   = "formater"
-  parent_id   = aws_api_gateway_rest_api.audio_formater_api.root_resource_id
-  rest_api_id = aws_api_gateway_rest_api.audio_formater_api.id
-}
 
 
-
-resource "aws_api_gateway_method" "method" {
-  rest_api_id   = aws_api_gateway_rest_api.audio_formater_api.id
-  resource_id   = aws_api_gateway_resource.resource.id
-  http_method   = "ANY"
-  authorization = "NONE"
-}
-
-resource "aws_api_gateway_integration" "audio_formater_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.audio_formater_api.id
-  resource_id             = aws_api_gateway_rest_api.audio_formater_api.root_resource_id
-  http_method             = "POST"
-
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.audio_formater_lambda.invoke_arn
-}
 
 # Lambda permision
 resource "aws_lambda_permission" "apigw_lambda" {
