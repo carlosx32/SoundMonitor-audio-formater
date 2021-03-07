@@ -17,8 +17,6 @@ variable "filename" {
 }
 
 
-data "aws_caller_identity" "current" {}
-
-output "account_id" {
-  value = data.aws_caller_identity.current.account_id
+variable "accountId" {
+  default = 827642192861
 }
