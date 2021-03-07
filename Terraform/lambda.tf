@@ -1,11 +1,10 @@
-resource "aws_lambda_function" "func" {
+resource "aws_lambda_function" "audio_formater_lambda" {
   filename      = var.filename
   function_name = "audio_formater"
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "index.mapAudio"
   runtime       = "nodejs12.x"
   publish       = true
-  source_code_hash = filebase64sha256(var.filename)
 
 
   depends_on = [
